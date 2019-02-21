@@ -83,7 +83,7 @@
     </section>
   </div>
 
-  <div igxFlex="0 1 1000px">
+  <div igxFlex="0 1 500px">
 
     <section class="performance-summary"
       *ngIf="!isCreating; else transactionForm"
@@ -134,6 +134,7 @@
           </div>
         </aside>
         <p class="current-month">{{ today | date:'MMM'}} '{{ today | date:'yy' }}</p>
+        <br>
         <p class="spent-value">{{ spentAmountForThisMonth | currency:'USD':'symbol':'1.0-0' }}</p>
       </div>
 
@@ -146,7 +147,8 @@
               'delta-value--minus': spentAmountFromLastMonth < 0,
               'delta-value--plus': spentAmountFromLastMonth > 0
             }">
-            <igx-icon name="{{ spentAmountFromLastMonth < 0 ? 'arrow_downward' : 'arrow_upward'}}"></igx-icon>
+            <igx-icon *ngIf="spentAmountFromLastMonth < 0">arrow_downward</igx-icon>
+            <igx-icon *ngIf="spentAmountFromLastMonth > 0">arrow_upward</igx-icon>
             {{ spentAmountFromLastMonth | currency:'USD':'symbol':'1.0-0' }} ({{ spentAmountForThisMonth / spentAmountFromLastMonth | percent }})
           </span>
         </div>
@@ -158,7 +160,8 @@
               'delta-value--minus': spentAmountFromLastYear < 0,
               'delta-value--plus': spentAmountFromLastYear > 0
             }">
-            <igx-icon name="{{ spentAmountFromLastYear > 0 ? 'arrow_upward' : 'arrow_downward'}}"></igx-icon>
+            <igx-icon *ngIf="spentAmountFromLastMonth < 0">arrow_downward</igx-icon>
+            <igx-icon *ngIf="spentAmountFromLastMonth > 0">arrow_upward</igx-icon>
             {{ spentAmountFromLastYear | currency:'USD':'symbol':'1.0-0' }} ({{ spentAmountForThisMonth / spentAmountFromLastYear | percent }})
           </span>
       </div>

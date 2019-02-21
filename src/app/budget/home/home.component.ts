@@ -186,7 +186,7 @@ export class HomeComponent implements OnInit, OnDestroy {
      */
 
     transactions$
-      .pipe<Transaction[]>(
+      .pipe<Transaction[], any>(
         takeUntil(this.onDestroy$),
         filter(Boolean)
       )
@@ -222,8 +222,7 @@ export class HomeComponent implements OnInit, OnDestroy {
             .filter(
               transaction =>
                 transaction.verified &&
-                transaction.date.getFullYear() === lastMonth &&
-                transaction.date.getMonth() === thisMonth
+                transaction.date.getFullYear() - 1 === lastYear
             )
             .reduce((sum, transaction) => sum + transaction.amount, 0);
       });

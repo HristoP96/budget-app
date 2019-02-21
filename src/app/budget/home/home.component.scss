@@ -167,11 +167,11 @@
       align-items: center;
 
       &--minus {
-        color: igx-color($app-palette, 'success');
+        color: igx-color($app-palette, 'error');
       }
 
       &--plus {
-        color: igx-color($app-palette, 'error');
+        color: igx-color($app-palette, 'success');
       }
     }
   }

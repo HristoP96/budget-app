@@ -151,7 +151,7 @@ export class BudgetManagementComponent implements OnInit, OnDestroy {
 
     this.budgetService.getBudgets$.pipe(takeUntil(this.onDestroy$)).subscribe();
     this.budgetService
-      .getTotalBudget$(2018)
+      .getTotalBudget$(2019)
       .pipe(takeUntil(this.onDestroy$))
       .subscribe();
   }

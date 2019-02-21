@@ -21,9 +21,6 @@ import { httpInterceptorProviders } from './shared/http-interceptors';
 // Environment
 import { environment } from '../environments/environment';
 
-// Mock
-import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { MockBudgetService } from './shared/mocks/mock-budget.service';
 
 @NgModule({
   declarations: [AppComponent],
@@ -43,16 +40,8 @@ import { MockBudgetService } from './shared/mocks/mock-budget.service';
     AuthModule,
     SharedModule,
 
-    // Mock mdules
-    environment.production
-      ? []
-      : HttpClientInMemoryWebApiModule.forRoot(MockBudgetService, {
-          delay: 250,
-          // https://github.com/angular/in-memory-web-api/blob/master/src/in-mem/interfaces.ts#L85
-          put204: false
-        })
   ],
-  providers: [httpInterceptorProviders],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
